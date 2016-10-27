@@ -1,16 +1,18 @@
 package spring.boot.rest.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Created by Mtime on 2016/10/26.
  */
+@JsonIgnoreProperties
 public class User {
     private Long id;
     private String name;
     private Integer age;
     private Integer sex;
-    @JsonIgnore //标识忽略该属性
+    //@JsonIgnore //标识忽略该属性
     private String address;
 
     public Long getId() {
