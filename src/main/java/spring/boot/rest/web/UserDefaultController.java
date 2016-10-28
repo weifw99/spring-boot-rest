@@ -1,6 +1,6 @@
 package spring.boot.rest.web;
 
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,19 +8,18 @@ import spring.boot.rest.common.RestResult;
 import spring.boot.rest.domain.User;
 import spring.boot.rest.service.UserService;
 
+/**
+ * 默认没有添加Swagger2注解, 默认生成的restful api
+ */
 @RestController
-@RequestMapping(path = "/user")
-public class UserController {
+@RequestMapping(path = "/d/user")
+public class UserDefaultController {
 
     private final Logger logger = Logger.getLogger(getClass());
 
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "获取用户详细信息", notes = "根据用户id获取user" )
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
-    })
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public RestResult getUser(@RequestParam Long id) {
         User user = userService.getUser(id);
